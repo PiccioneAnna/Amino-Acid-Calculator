@@ -8,14 +8,43 @@ namespace Amino_Acid_Calculator.source
 {
     internal class CalculationManager
     {
-        public string basefn;
-        public string inputsfn;
-        public string outputsfn;
+        #region Fields
+
+        public string? inputsfn;
+        public string? outputsfn;
 
         public string aaBasefn = "baseAAValues.csv";
-        public string baseIDsfn = "baseAAValues.csv";
+        public string baseIDsfn = "baseIDs.csv";
 
+        #endregion
 
+        public void Run()
+        {
+
+        }
+
+        #region Data Population
+
+        public void GrabBaseValues()
+        {
+
+        }
+
+        public void MapInputValues()
+        {
+
+        }
+
+        #endregion
+
+        #region Math
+
+        public void CalculateTotal()
+        {
+
+        }
+
+        #endregion
 
     }
 }
