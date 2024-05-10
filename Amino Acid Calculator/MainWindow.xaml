@@ -5,21 +5,52 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Amino_Acid_Calculator"
         mc:Ignorable="d"
-        Title="Amino Acid Calculator" Height="500" Width="375" ResizeMode="NoResize">
-    <StackPanel Height="475" Width="350">
+        Title="Amino Acid Calculator" Height="420" Width="375" ResizeMode="NoResize">
+    <StackPanel Height="380" Width="350">
 
-        <Label FontSize="10" Height="25" RenderTransformOrigin="0.5,0.5">Please select all correct file locations before continuing</Label>
+        <Label FontSize="10" Height="25" VerticalContentAlignment="Bottom"  RenderTransformOrigin="0.5,0.5">Please select all correct file locations before continuing</Label>
 
         <StackPanel Background="LightGray" Orientation="Horizontal">
-            <Label VerticalAlignment="Center" Margin="0 0 10 0" Width="65">Base Files:</Label>
-            <TextBox Name="basetxt" Background="#f0f0f0" TextWrapping="Wrap" Text="" Width="236" Height="20"/>
+            <Label VerticalAlignment="Center" Margin="0 0 10 0" Width="100" FontSize="11">Base Info Location:</Label>
+            <TextBox IsReadOnly="True" Name="basetxt" Background="#f0f0f0" TextWrapping="Wrap" Text="" Width="200" Height="20" FontSize="10"/>
             <Button Height="20" Width="20" Margin="10 0 0 0" Click="SelectBaseFileLocation">
                 <Label Foreground="Black" FontSize="8" Height="22">...</Label>
             </Button>
         </StackPanel>
 
+        <StackPanel Margin="0 2" Background="LightGray" Orientation="Horizontal">
+            <Label VerticalAlignment="Center" Margin="0 0 10 0" Width="100" FontSize="11">Input File:</Label>
+            <TextBox IsReadOnly="True"  Name="inputtxt" Background="#f0f0f0" TextWrapping="Wrap" Text="" Width="200" Height="20" FontSize="10"/>
+            <Button Height="20" Width="20" Margin="10 0 0 0" Click="SelectInputFile">
+                <Label Foreground="Black" FontSize="8" Height="22">...</Label>
+            </Button>
+        </StackPanel>
+
+        <StackPanel Background="LightGray" Orientation="Horizontal">
+            <Label VerticalAlignment="Center" Margin="0 0 10 0" Width="100" FontSize="11">Output Location:</Label>
+            <TextBox IsReadOnly="True"  Name="outputtxt" Background="#f0f0f0" TextWrapping="Wrap" Text="" Width="200" Height="20" FontSize="10"/>
+            <Button Height="20" Width="20" Margin="10 0 0 0" Click="SelectOutputLocation">
+                <Label Foreground="Black" FontSize="8" Height="22">...</Label>
+            </Button>
+        </StackPanel>
+
+        <Grid>
+            <Label FontSize="10" Height="25" VerticalContentAlignment="Bottom" Margin="0 25 0 0">Logs:</Label>
+
+            <Button Click="RunCalculator" Background="DarkGray" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 5 0 0" Width="50" Height="30">
+                <Label FontSize="12">Run</Label>
+            </Button>
+
+        </Grid>
 
 
+        <Border BorderBrush="Gray" BorderThickness=".5" Height="200" >
+            <ScrollViewer Background="#dbdbdb">
+                <TextBlock Name="logText" TextWrapping="Wrap" FontSize="10"></TextBlock>
+            </ScrollViewer>
+        </Border>
+
+        <Label Name="statusLabel" FontSize="10" Height="25" HorizontalAlignment="Right" VerticalContentAlignment="Bottom"  RenderTransformOrigin="0.5,0.5">Status : Not Started</Label>
 
     </StackPanel>
 </Window>

@@ -1,4 +1,4 @@
-MEAL_ID/LINE NUMBER,COLUMN NAME,Index Food (Which row this FFQ item correlates to in the UK + US Index
+MEAL_ID/LINE NUMBER,COLUMN NAME,FFQ INDEX
 0,MILK,
 1,BEEF,16
 2,BURGER,18

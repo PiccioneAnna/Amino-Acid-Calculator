@@ -6,16 +6,12 @@ namespace Amino_Acid_Calculator.source
     /// <summary>
     /// A collection of custom data structures made from csv templates
     /// </summary>
-    internal class CustomDataStructures
+    public class CustomDataStructures
     {
-        public int ffqCutoff = 130;
-        public List<string>? AA_Names;
-        public List<string>? ffq_IDs;
-
         /// <summary>
         /// Dictionary containing the base conversion rate for each ffq value, taken from FETA program
         /// </summary>
-        public static Dictionary<int, Double> baseFrequencies = new()
+        public static Dictionary<int, Double> BaseFrequencies = new()
         {
             {1, 0},
             {2, 0.07},
@@ -32,7 +28,7 @@ namespace Amino_Acid_Calculator.source
         /// Structure containing all of the original meal information within baseAAValue database
         ///  *LINE 0 NOT INCLUDED : DNI MILK
         /// </summary>
-        public struct BaseMealId
+        public struct BaseMealInfo
         {
             public int mealID;
             public string mealName;
@@ -56,7 +52,7 @@ namespace Amino_Acid_Calculator.source
         public struct InputDataStruct
         {
             public string ffqID;
-            public Dictionary<int, int> answers; // x = question number, y = answer
+            public Dictionary<string, int> answers; // x = question number, y = answer
         }
 
         /// For above data: all same named variables within custom structs should equal same number
