@@ -67,11 +67,12 @@ namespace Amino_Acid_Calculator.source
             logtext.Text += "\n Input values collected successfully.";
             logtext.Text += "\n " + inputDataStructs.Count + " ffq collected.";
 
-        }
+            logtext.Text += "\n Starting calculations...";
+            CalculateTotal();
+            logtext.Text += "\n Finished. Writing to csv output.";
 
-        public void MapInputValues()
-        {
-
+            FileWriter.WriteOutputsToFile(outputFolderPath, outputDataStructs, AA_Names);
+            logtext.Text += "\n CSV completed. Check output location.";
         }
 
         #endregion
@@ -80,7 +81,34 @@ namespace Amino_Acid_Calculator.source
 
         public void CalculateTotal()
         {
+            foreach (var inputLine in inputDataStructs) // read each input line & create struct
+            {
+                OutputDataStruct outputDataStruct = new();
+                outputDataStruct.ffqID = inputLine.ffqID;
+                outputDataStruct.totalAA = new();
 
+                foreach (var aminoAcid in AA_Names)
+                {
+                    int aaNameIndex = AA_Names.IndexOf(aminoAcid);
+                    double total = 0;
+
+                    for (int i = 0; i < inputLine.answers.Count; i++) // read just ffq answers
+                    {
+                        BaseFrequencies.TryGetValue(inputLine.answers.ElementAt(i).Value, out double freq);
+                        int mealIndex = baseMealInfoList[i].mealIndex;
+                        if(mealIndex > -1)
+                        {
+                            var baseAAValue = baseAAStructs.First(item => item.mealIndex == mealIndex).aaValues[aaNameIndex];
+                            total += freq * baseAAValue;
+                            total = (double)decimal.Round((decimal)total, 2);
+                        }                        
+                    }
+
+                    outputDataStruct.totalAA.Add(aminoAcid, total);
+                }
+
+                outputDataStructs.Add(outputDataStruct);
+            }
         }
 
         #endregion

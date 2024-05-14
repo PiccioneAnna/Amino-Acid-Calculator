@@ -29,11 +29,18 @@ namespace Amino_Acid_Calculator
         public string inputFilePath = "";
         public string outputFolderPath = "";
 
+        public string workingDirectory;
+        public string initDirectory;
+
         public CalculationManager calculationManager;
 
         public MainWindow()
         {
             InitializeComponent();
+
+            workingDirectory = Environment.CurrentDirectory;
+            initDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
+
             calculationManager = new CalculationManager();
         }
 
@@ -45,8 +52,8 @@ namespace Amino_Acid_Calculator
 
         private void SelectBaseFileLocation(object sender,  RoutedEventArgs e)
         {
-            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
-            dialog.InitialDirectory = Directory.GetCurrentDirectory();
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();          
+            dialog.InitialDirectory = initDirectory;
             dialog.IsFolderPicker = true;
             if(dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
@@ -58,7 +65,7 @@ namespace Amino_Acid_Calculator
         private void SelectInputFile(object sender, RoutedEventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.InitialDirectory = Directory.GetCurrentDirectory();
+            fileDialog.InitialDirectory = initDirectory;
             fileDialog.Filter = "CSV files (*.csv)|*.csv|XML files (*.xml)|*.xml";
             bool? success = fileDialog.ShowDialog();
             if (success == true)
@@ -71,7 +78,7 @@ namespace Amino_Acid_Calculator
         private void SelectOutputLocation(object sender, RoutedEventArgs e)
         {
             CommonOpenFileDialog dialog = new CommonOpenFileDialog();
-            dialog.InitialDirectory = Directory.GetCurrentDirectory();
+            dialog.InitialDirectory = initDirectory;
             dialog.IsFolderPicker = true;
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {

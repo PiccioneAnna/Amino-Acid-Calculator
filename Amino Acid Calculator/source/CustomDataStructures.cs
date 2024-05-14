@@ -62,8 +62,8 @@ namespace Amino_Acid_Calculator.source
         /// </summary>
         public struct OutputDataStruct
         {
-            public string ffq_ID;
-            public Dictionary<string, int> totalAA; //string = aa int = total amount
+            public string ffqID;
+            public Dictionary<string, Double> totalAA; //string = aa int = total amount
         }
 
     }
